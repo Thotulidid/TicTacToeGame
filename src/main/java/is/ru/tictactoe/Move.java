@@ -5,6 +5,7 @@ public class Move {
 	private char player;
 	public Move(int position, char player){
 		this.position = position;
+		this.player = player;
 	}
 	
 	public int getPosition(){
@@ -12,6 +13,6 @@ public class Move {
 	}
 	
 	public char getPlayer(){
-		return 'a';
+		return this.player;
 	}
 }

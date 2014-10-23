@@ -11,5 +11,11 @@ public class MoveTest {
 		Move move = new Move(0, 'X');
 		assertEquals(0, move.getPosition());
 	}
+	
+	@Test
+	public void MoveReturnsCorrectPlayer() {
+		Move move = new Move(0, 'X');
+		assertEquals('X', move.getPlayer());
+	}
 
 }
