@@ -7,6 +7,9 @@ public class Move {
 		if(position < 0 || position > 8){
 			throw new IllegalArgumentException("Position must be in range [0, 8]");
 		}
+		else if(player != 'X' && player != 'O'){
+			throw new IllegalArgumentException("Player must be either 'X' or 'O'");
+		}
 		this.position = position;
 		this.player = player;
 	}

@@ -29,4 +29,11 @@ public class MoveTest {
         thrown.expectMessage("Position must be in range [0, 8]");
         Move move = new Move(10, 'O');
 	}
+	
+	@Test
+	public void MoveThrowsIllegalArgumentExceptionIfPlayerIsNotXorO(){
+		thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Player must be either 'X' or 'O'");
+        Move move = new Move(5, 'F');
+	}
 }
