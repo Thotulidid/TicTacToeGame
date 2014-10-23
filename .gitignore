@@ -12,5 +12,8 @@
 hs_err_pid*
 
 # Ignore gradle files
-#.gradle/
+.gradle/
 build/
+
+# Include gradle wrapper jar
+!gradle/wrapper/*.jar
