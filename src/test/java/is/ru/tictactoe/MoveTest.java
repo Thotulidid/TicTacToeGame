@@ -2,10 +2,15 @@ package is.ru.tictactoe;
 
 import static org.junit.Assert.*;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class MoveTest {
 
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
+	
 	@Test
 	public void MoveReturnsCorrectPosition() {
 		Move move = new Move(0, 'X');
@@ -18,4 +23,10 @@ public class MoveTest {
 		assertEquals('X', move.getPlayer());
 	}
 
+	@Test
+	public void MoveThrowsIllegalArgumentExceptionIfPositionIsNotInRange0To8(){
+		thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Position must be in range [0, 8]");
+        Move move = new Move(10, 'O');
+	}
 }
