@@ -4,11 +4,22 @@ public class Move {
 	private int position;
 	private char player;
 	public Move(int position, char player){
+		StringBuilder errorMessage = null;
 		if(position < 0 || position > 8){
-			throw new IllegalArgumentException("Position must be in range [0, 8]");
+			errorMessage = new StringBuilder();
+			errorMessage.append("Position must be in range [0, 8]");
 		}
-		else if(player != 'X' && player != 'O'){
-			throw new IllegalArgumentException("Player must be either 'X' or 'O'");
+		if(player != 'X' && player != 'O'){
+			if(errorMessage == null){
+				errorMessage = new StringBuilder();
+			}
+			else{
+				errorMessage.append(", ");
+			}
+			errorMessage.append("Player must be either 'X' or 'O'");
+		}
+		if(errorMessage != null){
+			throw new IllegalArgumentException(errorMessage.toString());
 		}
 		this.position = position;
 		this.player = player;
