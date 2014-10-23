@@ -15,5 +15,10 @@ hs_err_pid*
 .gradle/
 build/
 
+# Ignore eclipse files
+.classpath
+.settings/
+.project
+
 # Include gradle wrapper jar
 !gradle/wrapper/*.jar
