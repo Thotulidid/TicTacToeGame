@@ -4,7 +4,7 @@ package is.ru.tictactoe;
  *  The <tt>Move</tt> class represents a data type for storing positions
  *  in <tt>TicTacToeGame</tt>.
  *  <p>
- *  @author Þotuliðið
+ *  @author ÃžotuliÃ°iÃ°
  */
 
 public class Move {
