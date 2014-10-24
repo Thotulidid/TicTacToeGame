@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class TicTacToeGame {
 	private ArrayList<Move> board;
-	private boolean whoHasTurn;
+	private char whoHasTurn = 'X';
 	
-	public Move Move(int position){
-		return null;
+	public Move move(int position){
+		return new Move(position, whoHasTurn);
 	}
 	
-	public Move Move(int position, char player){
-		return null;
+	public Move move(int position, char player){
+		return new Move(position, player);
 	}
 	
-	public boolean Move(Move move){
+	public boolean move(Move move){
 		return true;
 	}
 	
@@ -34,7 +34,7 @@ public class TicTacToeGame {
 		return;
 	}
 	
-	public char Winner(){
+	public char winner(){
 		return 'X';
 	}
 }
