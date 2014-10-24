@@ -63,7 +63,7 @@ public class TicTacToeGame {
 	}
 	
 	public char hasMove(char player){
-		return 'X';
+		return this.whoHasTurn;
 	}
 	
 	public boolean gameOver(){
