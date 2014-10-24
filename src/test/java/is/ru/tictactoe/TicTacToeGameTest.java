@@ -117,4 +117,17 @@ public class TicTacToeGameTest {
 		game.move(new Move(4, 'X'));
 		assertEquals('D', game.winner());
 	}
+	
+	@Test
+	public void BoardShouldBeEmptyAfterReset(){
+		TicTacToeGame game = new TicTacToeGame();
+		game.move(3);
+		game.move(4);
+		game.resetGame();
+		int counter = 0;
+		for(Move m : game.getBoard()){
+			counter++;
+		}
+		assertEquals(0, counter);
+	}
 }

@@ -1,6 +1,7 @@
 package is.ru.tictactoe;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class TicTacToeGame {
 	private ArrayList<Move> board;
@@ -71,8 +72,7 @@ public class TicTacToeGame {
 		}
 		
 		if(this.board.size() == 9){
-			this.gameIsOver = true;
-			this.winner = 'D';
+			endGame('D');
 			return true;
 		}
 		
@@ -125,12 +125,12 @@ public class TicTacToeGame {
 		this.gameIsOver = true;
 	}
 	
-	public ArrayList<Move> getBoard(){
-		return null;
+	public Iterable<Move> getBoard(){
+		return board;
 	}
 	
 	public void resetGame(){
-		return;
+		initializeGame('X');
 	}
 	
 	public char winner(){
