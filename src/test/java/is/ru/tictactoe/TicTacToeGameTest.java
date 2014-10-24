@@ -102,4 +102,19 @@ public class TicTacToeGameTest {
 		TicTacToeGame game = makeWinner('O');
 		assertEquals('O', game.winner());
 	}
+	
+	@Test
+	public void WinnerShouldReturnDIfGameDraws(){
+		TicTacToeGame game = new TicTacToeGame('X');
+		game.move(new Move(1, 'X'));
+		game.move(new Move(0, 'O'));
+		game.move(new Move(2, 'X'));
+		game.move(new Move(5, 'O'));
+		game.move(new Move(3, 'X'));
+		game.move(new Move(6, 'O'));
+		game.move(new Move(8, 'X'));
+		game.move(new Move(7, 'O'));
+		game.move(new Move(4, 'X'));
+		assertEquals('D', game.winner());
+	}
 }

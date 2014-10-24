@@ -23,7 +23,7 @@ public class TicTacToeGame {
 		this.board = new ArrayList<Move>(9);
 		this.whoHasTurn = firstPlayer;
 		this.gameIsOver = false;
-		this.winner = 'D';
+		this.winner = '?';
 	}
 	
 	public Move move(int position){
@@ -47,7 +47,7 @@ public class TicTacToeGame {
 	}
 	
 	public boolean move(Move move){
-		if(board.contains(move) || move.getPlayer() != this.whoHasTurn || this.gameOver()){
+		if(board.contains(move) || move.getPlayer() != this.whoHasTurn || this.gameIsOver){
 			return false;
 		}
 		board.add(move);
@@ -57,6 +57,7 @@ public class TicTacToeGame {
 		else{
 			this.whoHasTurn = 'X';
 		}
+		this.gameOver();
 		return true;
 	}
 	
@@ -65,9 +66,16 @@ public class TicTacToeGame {
 	}
 	
 	public boolean gameOver(){
-		if(this.gameIsOver || this.board.size() == 9){
+		if(this.gameIsOver){
 			return true;
 		}
+		
+		if(this.board.size() == 9){
+			this.gameIsOver = true;
+			this.winner = 'D';
+			return true;
+		}
+		
 		char[] gameBoard = new char[9];
 		for(int i = 0; i < 9; i++){
 			gameBoard[i] = (char)(i + 33);
@@ -77,37 +85,44 @@ public class TicTacToeGame {
 		}
 		
 		if(gameBoard[0] == gameBoard[1] && gameBoard[0] == gameBoard[2]){
-			return endGame(gameBoard[0]);
+			endGame(gameBoard[0]);
+			return true;
 		}
 		else if(gameBoard[3] == gameBoard[4] && gameBoard[3] == gameBoard[5]){
-			return endGame(gameBoard[3]);
+			endGame(gameBoard[3]);
+			return true;
 		}
 		else if(gameBoard[6] == gameBoard[7] && gameBoard[6] == gameBoard[8]){
-			return endGame(gameBoard[6]);
+			endGame(gameBoard[6]);
+			return true;
 		}
 		else if(gameBoard[0] == gameBoard[3] && gameBoard[0] == gameBoard[6]){
-			return endGame(gameBoard[0]);
+			endGame(gameBoard[0]);
+			return true;
 		}
 		else if(gameBoard[1] == gameBoard[4] && gameBoard[1] == gameBoard[7]){
-			return endGame(gameBoard[1]);
+			endGame(gameBoard[1]);
+			return true;
 		}
 		else if(gameBoard[2] == gameBoard[5] && gameBoard[2] == gameBoard[8]){
-			return endGame(gameBoard[2]);
+			endGame(gameBoard[2]);
+			return true;
 		}
 		else if(gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8]){
-			return endGame(gameBoard[0]);
+			endGame(gameBoard[0]);
+			return true;
 		}
 		else if(gameBoard[6] == gameBoard[4] && gameBoard[6] == gameBoard[2]){
-			return endGame(gameBoard[6]);
+			endGame(gameBoard[6]);
+			return true;
 		}
 		
 		return false;
 	}
 
-	private boolean endGame(char winner) {
+	private void endGame(char winner) {
 		this.winner = winner;
 		this.gameIsOver = true;
-		return true;
 	}
 	
 	public ArrayList<Move> getBoard(){
