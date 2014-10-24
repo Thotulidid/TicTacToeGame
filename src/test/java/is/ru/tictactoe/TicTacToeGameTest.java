@@ -53,9 +53,21 @@ public class TicTacToeGameTest {
 	}
 	
 	@Test
-	public void TwoLegalPositionMovesInARowFromTheSamePlayerShouldReturnFalseForTheSecondMove(){
+	public void TwoLegalPositionMoveWithMoveInARowFromTheSamePlayerShouldReturnFalseForTheSecondMove(){
 		TicTacToeGame game = new TicTacToeGame('X');
 		game.move(new Move(3, 'X'));
 		assertEquals(false, game.move(new Move(5, 'X')));
+	}
+	
+	@Test
+	public void MoveWithPositionShouldReturnNullIfGameIsOver(){
+		TicTacToeGame game = new TicTacToeGame();
+		game.move(0); // X 
+		game.move(3); // O
+		game.move(1); // X
+		game.move(4); // O
+		game.move(2); // X Wins
+		Move move = game.move(5); // O should not be able to play
+		assertEquals(null, move);
 	}
 }
