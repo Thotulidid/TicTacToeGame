@@ -55,4 +55,17 @@ public class Move {
 	public char getPlayer(){
 		return this.player;
 	}
+	
+	@Override
+    public boolean equals(Object object)
+    {
+        boolean sameSame = false;
+
+        if (object != null && object instanceof Move)
+        {
+            sameSame = this.position == ((Move) object).position;
+        }
+
+        return sameSame;
+    }
 }
