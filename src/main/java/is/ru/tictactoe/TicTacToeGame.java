@@ -6,6 +6,7 @@ public class TicTacToeGame {
 	private ArrayList<Move> board;
 	private char whoHasTurn;
 	private boolean gameIsOver;
+	private char winner;
 	
 	public TicTacToeGame(){
 		initializeGame('X');
@@ -22,6 +23,7 @@ public class TicTacToeGame {
 		this.board = new ArrayList<Move>(9);
 		this.whoHasTurn = firstPlayer;
 		this.gameIsOver = false;
+		this.winner = 'D';
 	}
 	
 	public Move move(int position){
@@ -68,46 +70,44 @@ public class TicTacToeGame {
 		}
 		char[] gameBoard = new char[9];
 		for(int i = 0; i < 9; i++){
-			gameBoard[i] = (char)i;
+			gameBoard[i] = (char)(i + 33);
 		}
 		for(Move m : this.board){
 			gameBoard[m.getPosition()] = m.getPlayer();
 		}
 		
 		if(gameBoard[0] == gameBoard[1] && gameBoard[0] == gameBoard[2]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[0]);
 		}
 		else if(gameBoard[3] == gameBoard[4] && gameBoard[3] == gameBoard[5]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[3]);
 		}
 		else if(gameBoard[6] == gameBoard[7] && gameBoard[6] == gameBoard[8]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[6]);
 		}
 		else if(gameBoard[0] == gameBoard[3] && gameBoard[0] == gameBoard[6]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[0]);
 		}
 		else if(gameBoard[1] == gameBoard[4] && gameBoard[1] == gameBoard[7]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[1]);
 		}
 		else if(gameBoard[2] == gameBoard[5] && gameBoard[2] == gameBoard[8]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[2]);
 		}
 		else if(gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[0]);
 		}
 		else if(gameBoard[6] == gameBoard[4] && gameBoard[6] == gameBoard[2]){
-			this.gameIsOver = true;
-			return true;
+			return endGame(gameBoard[6]);
 		}
 		
 		return false;
+	}
+
+	private boolean endGame(char winner) {
+		this.winner = winner;
+		this.gameIsOver = true;
+		return true;
 	}
 	
 	public ArrayList<Move> getBoard(){
@@ -119,6 +119,6 @@ public class TicTacToeGame {
 	}
 	
 	public char winner(){
-		return 'X';
+		return winner;
 	}
 }
