@@ -11,8 +11,7 @@ public class TicTacToeGame {
 	}
 	
 	public TicTacToeGame(char firstPlayer){
-		if(firstPlayer != 'O' && firstPlayer != 'X')
-		{
+		if(firstPlayer != 'O' && firstPlayer != 'X'){
 			throw new IllegalArgumentException("Player must be either 'X' or 'O'");
 		}
 		this.board = new ArrayList<Move>(9);
@@ -20,18 +19,36 @@ public class TicTacToeGame {
 	}
 	
 	public Move move(int position){
-		return new Move(position, whoHasTurn);
+		Move theMove = new Move(position, this.whoHasTurn);
+		if(this.move(theMove)){
+			return theMove;	
+		}
+		else{
+			return null;
+		}
 	}
 	
 	public Move move(int position, char player){
-		return new Move(position, player);
+		Move theMove = new Move(position, player);
+		if(this.move(theMove)){
+			return theMove;
+		}
+		else{
+			return null;
+		}
 	}
 	
 	public boolean move(Move move){
-		if(board.contains(move)){
+		if(board.contains(move) || move.getPlayer() != this.whoHasTurn){
 			return false;
 		}
 		board.add(move);
+		if(this.whoHasTurn == 'X'){
+			this.whoHasTurn = 'O';
+		}
+		else{
+			this.whoHasTurn = 'X';
+		}
 		return true;
 	}
 	

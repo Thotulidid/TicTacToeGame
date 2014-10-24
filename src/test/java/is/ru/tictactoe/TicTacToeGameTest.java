@@ -12,14 +12,21 @@ public class TicTacToeGameTest {
 	public ExpectedException thrown = ExpectedException.none();
 	
 	@Test
-	public void MoveReturnsCorrectMovePosition() {
+	public void ConstructorThrowsExceptionForIllegalArgument(){
+		thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Player must be either 'X' or 'O'");
+        TicTacToeGame game = new TicTacToeGame('G');
+	}
+	
+	@Test
+	public void MoveWithOnlyPositionReturnsCorrectMovePosition() {
 		TicTacToeGame game = new TicTacToeGame();
 		Move newMove = game.move(5);
 		assertEquals(5, newMove.getPosition());
 	}
 	
 	@Test
-	public void MoveReturnsCorrectMove() {
+	public void MoveWithPositionAndPlayerReturnsCorrectMove() {
 		TicTacToeGame game = new TicTacToeGame();
 		Move newMove = game.move(7, 'X');
 		assertEquals('X', newMove.getPlayer());
@@ -27,8 +34,8 @@ public class TicTacToeGameTest {
 	}
 	
 	@Test
-	public void MoveToOccupiedPositionReturnsFalse() {
-		TicTacToeGame game = new TicTacToeGame();
+	public void MoveWithMoveToOccupiedPositionReturnsFalse() {
+		TicTacToeGame game = new TicTacToeGame('O');
 		Move move = new Move(2, 'O');
 		game.move(move);
 		boolean goodMove = game.move(move);
@@ -36,8 +43,8 @@ public class TicTacToeGameTest {
 	}
 	
 	@Test
-	public void MoveToUnoccupiedPositionReturnsTrue() {
-		TicTacToeGame game = new TicTacToeGame();
+	public void MoveWithMoveToUnoccupiedPositionReturnsTrue() {
+		TicTacToeGame game = new TicTacToeGame('O');
 		Move move = new Move(2, 'O');
 		Move newMove = new Move(4, 'X');
 		game.move(move);
@@ -46,10 +53,9 @@ public class TicTacToeGameTest {
 	}
 	
 	@Test
-	public void ConstructorThrowsExceptionForIllegalArgument(){
-		thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Player must be either 'X' or 'O'");
-        TicTacToeGame game = new TicTacToeGame('G');
+	public void TwoLegalPositionMovesInARowFromTheSamePlayerShouldReturnFalseForTheSecondMove(){
+		TicTacToeGame game = new TicTacToeGame('X');
+		game.move(new Move(3, 'X'));
+		assertEquals(false, game.move(new Move(5, 'X')));
 	}
-
 }
