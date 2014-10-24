@@ -63,7 +63,7 @@ public class TicTacToeGame {
 	}
 	
 	public boolean gameOver(){
-		if(this.gameIsOver){
+		if(this.gameIsOver || this.board.size() == 9){
 			return true;
 		}
 		char[] gameBoard = new char[9];

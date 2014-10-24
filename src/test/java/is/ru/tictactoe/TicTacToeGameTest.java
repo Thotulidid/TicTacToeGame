@@ -70,4 +70,19 @@ public class TicTacToeGameTest {
 		Move move = game.move(5); // O should not be able to play
 		assertEquals(null, move);
 	}
+	
+	@Test
+	public void GameOverShouldReturnTrueIfBoardIsFull(){
+		TicTacToeGame game = new TicTacToeGame('X');
+		game.move(new Move(1, 'X'));
+		game.move(new Move(0, 'O'));
+		game.move(new Move(2, 'X'));
+		game.move(new Move(5, 'O'));
+		game.move(new Move(3, 'X'));
+		game.move(new Move(6, 'O'));
+		game.move(new Move(8, 'X'));
+		game.move(new Move(7, 'O'));
+		game.move(new Move(4, 'X'));
+		assertEquals(true, game.gameOver());
+	}
 }
