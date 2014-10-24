@@ -62,7 +62,7 @@ public class TicTacToeGame {
 		return true;
 	}
 	
-	public char hasMove(char player){
+	public char hasMove(){
 		return this.whoHasTurn;
 	}
 	
