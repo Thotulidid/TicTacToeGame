@@ -61,14 +61,19 @@ public class TicTacToeGameTest {
 	
 	@Test
 	public void MoveWithPositionShouldReturnNullIfGameIsOver(){
+		TicTacToeGame game = xWins();
+		Move move = game.move(5); // O should not be able to play
+		assertEquals(null, move);
+	}
+	
+	private TicTacToeGame xWins(){
 		TicTacToeGame game = new TicTacToeGame();
 		game.move(0); // X 
 		game.move(3); // O
 		game.move(1); // X
 		game.move(4); // O
 		game.move(2); // X Wins
-		Move move = game.move(5); // O should not be able to play
-		assertEquals(null, move);
+		return game;
 	}
 	
 	@Test
@@ -84,5 +89,10 @@ public class TicTacToeGameTest {
 		game.move(new Move(7, 'O'));
 		game.move(new Move(4, 'X'));
 		assertEquals(true, game.gameOver());
+	}
+	@Test
+	public void WinnerShouldReturnXIfXWins(){
+		TicTacToeGame game = xWins();
+		assertEquals('X', game.winner());
 	}
 }
