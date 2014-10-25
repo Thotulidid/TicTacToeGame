@@ -126,7 +126,9 @@ public class TicTacToeGameTest {
 		game.resetGame();
 		int counter = 0;
 		for(Move m : game.getBoard()){
-			counter++;
+			if(m != null){
+				counter++;
+			}
 		}
 		assertEquals(0, counter);
 	}

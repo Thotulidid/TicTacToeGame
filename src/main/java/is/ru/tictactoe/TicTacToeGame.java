@@ -125,8 +125,12 @@ public class TicTacToeGame {
 		this.gameIsOver = true;
 	}
 	
-	public Iterable<Move> getBoard(){
-		return board;
+	public Move[] getBoard(){
+		Move[] gameBoard = new Move[9];
+		for(Move m : this.board){
+			gameBoard[m.getPosition()] = m;
+		}	
+		return gameBoard;
 	}
 	
 	public void resetGame(){
