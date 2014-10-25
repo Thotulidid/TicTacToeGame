@@ -125,11 +125,6 @@ public class TicTacToeGame {
 			return true;
 		}
 		
-		if(this.board.size() == 9){
-			endGame('D');
-			return true;
-		}
-		
 		char[] gameBoard = new char[9];
 		for(int i = 0; i < 9; i++){
 			gameBoard[i] = (char)(i + 33);
@@ -171,6 +166,10 @@ public class TicTacToeGame {
 			return true;
 		}
 		
+		if(this.board.size() == 9){
+			endGame('D');
+			return true;
+		}
 		return false;
 	}
 

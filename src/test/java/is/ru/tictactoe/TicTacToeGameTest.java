@@ -77,7 +77,22 @@ public class TicTacToeGameTest {
 	}
 	
 	@Test
-	public void GameOverShouldReturnTrueIfBoardIsFull(){
+	public void XShouldBeWinnerIfXWinsWhenBoardGetsFull(){
+		TicTacToeGame game = new TicTacToeGame('X');
+		game.move(new Move(0, 'X'));
+		game.move(new Move(1, 'O'));
+		game.move(new Move(2, 'X'));
+		game.move(new Move(3, 'O'));
+		game.move(new Move(4, 'X'));
+		game.move(new Move(5, 'O'));
+		game.move(new Move(7, 'X'));
+		game.move(new Move(8, 'O'));
+		game.move(new Move(6, 'X'));;
+		assertEquals('X', game.winner());
+	}
+	
+	@Test 
+	public void GameOverShouldReturnTrueIfBoardIsFullWithoutWinner(){
 		TicTacToeGame game = new TicTacToeGame('X');
 		game.move(new Move(1, 'X'));
 		game.move(new Move(0, 'O'));
@@ -89,6 +104,19 @@ public class TicTacToeGameTest {
 		game.move(new Move(7, 'O'));
 		game.move(new Move(4, 'X'));
 		assertEquals(true, game.gameOver());
+	}
+	public void WinnerShouldBeDIfBoardGetsFullWhitoutWinner(){
+		TicTacToeGame game = new TicTacToeGame('X');
+		game.move(new Move(1, 'X'));
+		game.move(new Move(0, 'O'));
+		game.move(new Move(2, 'X'));
+		game.move(new Move(5, 'O'));
+		game.move(new Move(3, 'X'));
+		game.move(new Move(6, 'O'));
+		game.move(new Move(8, 'X'));
+		game.move(new Move(7, 'O'));
+		game.move(new Move(4, 'X'));
+		assertEquals('D', game.winner());
 	}
 	
 	@Test
