@@ -1,7 +1,9 @@
 package is.ru.tictactoe;
 
-import static spark.Spark.*;
-import spark.*;
+import static spark.Spark.get;
+import spark.Request;
+import spark.Route;
+import spark.Response;
  
 public class TicTacToeWebUI {
     public static void main(String[] args) {
