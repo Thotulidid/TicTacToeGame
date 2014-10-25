@@ -2,7 +2,7 @@
  * This package provides tests for the classes needed to created a TicTacToe game
  */
 /**
- * @author Şotuliğiğ
+ * @author ÃotuliÃ°iÃ°
  *
  */
 package is.ru.tictactoe;

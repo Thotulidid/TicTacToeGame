@@ -2,7 +2,7 @@
  * Provides the classes necessary to create a TicTacToe game. 
  */
 /**
- * @author Þotuliðið
+ * @author ÃžotuliÃ°iÃ°
  *
  */
 package is.ru.tictactoe;
