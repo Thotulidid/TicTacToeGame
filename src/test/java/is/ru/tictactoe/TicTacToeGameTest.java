@@ -1,6 +1,6 @@
 package is.ru.tictactoe;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Rule;
 import org.junit.Test;
