@@ -3,16 +3,33 @@ package is.ru.tictactoe;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ *  The <tt>TicTacToeGame</tt> class represents a data type for storing
+ *  all information on a particular game of TicTacToeGame.
+ *  <p>
+ *  @author Þotuliðið
+ */
+
 public class TicTacToeGame {
 	private ArrayList<Move> board;
 	private char whoHasTurn;
 	private boolean gameIsOver;
 	private char winner;
 	
+    /**
+     * Initializes the <tt>TicTacToeGame</tt> object with the default 
+     * staring player 'X'.
+     */
+	
 	public TicTacToeGame(){
 		initializeGame('X');
 	}
 	
+	  /**
+     * Initializes the <tt>TicTacToeGame</tt> object with the <tt>firstPlayer</tt>
+     * @param firstPlayer the first player to move in this game
+     * @throws IllegalArgumentException if the player is not 'X' or 'O'
+     */
 	public TicTacToeGame(char firstPlayer){
 		if(firstPlayer != 'O' && firstPlayer != 'X'){
 			throw new IllegalArgumentException("Player must be either 'X' or 'O'");
@@ -20,6 +37,9 @@ public class TicTacToeGame {
 		initializeGame(firstPlayer);
 	}
 	
+	
+	// helper function for the two TicTacToeGame constructor.
+	// initializes all of the fields of the class.
 	private void initializeGame(char firstPlayer) {
 		this.board = new ArrayList<Move>(9);
 		this.whoHasTurn = firstPlayer;
@@ -27,6 +47,14 @@ public class TicTacToeGame {
 		this.winner = '?';
 	}
 	
+	/**
+     * Calls the constructor of <tt>Move</tt> to construct
+     * a Move with <tt>position<tt> and the player who's turn
+     * it is in the game
+     * @param position the position of the move
+     * @return The <tt>Move</tt> constructed or null if the move
+     * could not take place in the game
+     */
 	public Move move(int position){
 		Move theMove = new Move(position, this.whoHasTurn);
 		if(this.move(theMove)){
@@ -37,6 +65,14 @@ public class TicTacToeGame {
 		}
 	}
 	
+	/**
+     * Calls the constructor of <tt>Move</tt> to construct
+     * a Move with <tt>position<tt> and <tt>player<tt>.
+     * @param position the position of the move
+     * @param player the player of the move
+     * @return The <tt>Move</tt> constructed or null if the move
+     * could not take place in the game
+     */
 	public Move move(int position, char player){
 		Move theMove = new Move(position, player);
 		if(this.move(theMove)){
@@ -47,6 +83,14 @@ public class TicTacToeGame {
 		}
 	}
 	
+	/**
+     * Adds the <tt>Move</tt> as the next move of the
+     * <tt>TicTacToeGame<tt>
+     * @param move
+     * @return <tt>false</tt> if the game was could not
+     * be added to the game and <tt>true<tt> if the add 
+     * was successful
+     */
 	public boolean move(Move move){
 		if(board.contains(move) || move.getPlayer() != this.whoHasTurn || this.gameIsOver){
 			return false;
@@ -61,11 +105,21 @@ public class TicTacToeGame {
 		this.gameOver();
 		return true;
 	}
-	
+	/**
+     * Return the players who�s turn it is in
+     * the <tt>TicTacToeGame</tt>.
+     * @return The player who's turn it is
+     */
 	public char hasMove(){
 		return this.whoHasTurn;
 	}
 	
+	/**
+     * Determines whether the <tt>TicTacToeGame<tt> is
+     * over or not
+     * @return <tt>true<tt> if the game is over and
+     * <tt>false<tt> otherwise.
+     */
 	public boolean gameOver(){
 		if(this.gameIsOver){
 			return true;
@@ -120,10 +174,20 @@ public class TicTacToeGame {
 		return false;
 	}
 
+	/**
+	 * ends the game ant sets <tt>winner<tt>
+	 * as the winner of the game.
+	 * @param winner
+	 */
 	private void endGame(char winner) {
 		this.winner = winner;
 		this.gameIsOver = true;
 	}
+	/**
+	 * Returns the character array representing the <tt>TicTacToeGame<tt>
+	 * board
+	 * @return the character array representing the board
+	 */
 	
 	public Move[] getBoard(){
 		Move[] gameBoard = new Move[9];
@@ -132,10 +196,17 @@ public class TicTacToeGame {
 		}	
 		return gameBoard;
 	}
-	
+	/**
+	 * Resets the <tt>TicTacToeGame<tt>
+	 */
 	public void resetGame(){
 		initializeGame('X');
 	}
+	
+	/**
+	 * Resets Winner of the <tt>TicTacToeGame<tt>
+	 * or 'D' if the game was drawn.
+	 */
 	
 	public char winner(){
 		return winner;
