@@ -23,3 +23,6 @@ build/
 # Include gradle wrapper jar
 !gradle/wrapper/*.jar
 /bin/
+
+# Thumbs.db
+Thumbs.db
