@@ -105,6 +105,8 @@ public class TicTacToeGameTest {
 		game.move(new Move(4, 'X'));
 		assertEquals(true, game.gameOver());
 	}
+	
+	@Test
 	public void WinnerShouldBeDIfBoardGetsFullWhitoutWinner(){
 		TicTacToeGame game = new TicTacToeGame('X');
 		game.move(new Move(1, 'X'));
