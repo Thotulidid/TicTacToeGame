@@ -1,7 +1,6 @@
 package is.ru.tictactoe;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *  The <tt>TicTacToeGame</tt> class represents a data type for storing
@@ -9,7 +8,6 @@ import java.util.Iterator;
  *  <p>
  *  @author Þotuliðið
  */
-
 public class TicTacToeGame {
 	private ArrayList<Move> board;
 	private char whoHasTurn;
@@ -18,14 +16,13 @@ public class TicTacToeGame {
 	
     /**
      * Initializes the <tt>TicTacToeGame</tt> object with the default 
-     * staring player 'X'.
+     * starting player 'X'.
      */
-	
 	public TicTacToeGame(){
 		initializeGame('X');
 	}
 	
-	  /**
+	/**
      * Initializes the <tt>TicTacToeGame</tt> object with the <tt>firstPlayer</tt>
      * @param firstPlayer the first player to move in this game
      * @throws IllegalArgumentException if the player is not 'X' or 'O'
@@ -86,8 +83,8 @@ public class TicTacToeGame {
 	/**
      * Adds the <tt>Move</tt> as the next move of the
      * <tt>TicTacToeGame<tt>
-     * @param move
-     * @return <tt>false</tt> if the game was could not
+     * @param move the move to perform
+     * @return <tt>false</tt> if the move could not
      * be added to the game and <tt>true<tt> if the add 
      * was successful
      */
@@ -105,8 +102,9 @@ public class TicTacToeGame {
 		this.gameOver();
 		return true;
 	}
+	
 	/**
-     * Return the players who�s turn it is in
+     * Return the players who's turn it is in
      * the <tt>TicTacToeGame</tt>.
      * @return The player who's turn it is
      */
@@ -174,7 +172,7 @@ public class TicTacToeGame {
 	}
 
 	/**
-	 * ends the game ant sets <tt>winner<tt>
+	 * ends the game and sets <tt>winner<tt>
 	 * as the winner of the game.
 	 * @param winner
 	 */
@@ -182,12 +180,12 @@ public class TicTacToeGame {
 		this.winner = winner;
 		this.gameIsOver = true;
 	}
+	
 	/**
 	 * Returns the character array representing the <tt>TicTacToeGame<tt>
 	 * board
 	 * @return the character array representing the board
 	 */
-	
 	public Move[] getBoard(){
 		Move[] gameBoard = new Move[9];
 		for(Move m : this.board){
@@ -195,6 +193,7 @@ public class TicTacToeGame {
 		}	
 		return gameBoard;
 	}
+	
 	/**
 	 * Resets the <tt>TicTacToeGame<tt>
 	 */
@@ -203,10 +202,10 @@ public class TicTacToeGame {
 	}
 	
 	/**
-	 * Resets Winner of the <tt>TicTacToeGame<tt>
+	 * Returns Winner of the <tt>TicTacToeGame<tt>
 	 * or 'D' if the game was drawn.
+	 * @return the winner of the game.
 	 */
-	
 	public char winner(){
 		return winner;
 	}
