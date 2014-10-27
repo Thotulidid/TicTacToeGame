@@ -42,5 +42,5 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
 }
 
-task stage(dependsOn: ['clean', 'installApp'])
+task stage(dependsOn: ['clean'])
 
