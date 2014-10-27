@@ -38,4 +38,9 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
 task stage(dependsOn: ['clean', 'installApp'])
+
