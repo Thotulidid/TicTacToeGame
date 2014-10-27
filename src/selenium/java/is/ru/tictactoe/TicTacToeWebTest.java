@@ -1,10 +1,16 @@
-package com.example.tests;
+package is.ru.tictactoe;
 
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Test;
+import org.junit.Before;
+
+import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 import static org.hamcrest.CoreMatchers.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
