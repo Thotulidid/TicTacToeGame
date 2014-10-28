@@ -4,9 +4,18 @@ import static spark.Spark.get;
 import spark.Request;
 import spark.Route;
 import spark.Response;
+import static spark.Spark.setPort;
  
 public class TicTacToeWebUI {
     public static void main(String[] args) {
+        //SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
+        String port = System.getenv("PORT");
+        if (port != null){
+            setPort(Integer.valueOf(port));
+        }
+        else {
+            setPort(8080);
+        }
         final TicTacToeGame game = new TicTacToeGame();
     	get(new Route(":param") {
             @Override
