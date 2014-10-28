@@ -1,5 +1,4 @@
 language: java
 
 script:
-- ./gradlew check
-- ./gradlew seleniumXvfb
+- ./gradlew check seleniumXvfb -x selenium
