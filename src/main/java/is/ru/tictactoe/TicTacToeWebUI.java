@@ -5,9 +5,9 @@ import spark.*;
 import spark.servlet.SparkApplication;
 
  
-public class TicTacToeWebUI implements SparkApplication {
+public class TicTacToeWebUI {
     public static void main(String[] args) {
-        SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
+        //SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
         String port = System.getenv("PORT");
         if (port != null){
             setPort(Integer.valueOf(port));
