@@ -13,9 +13,6 @@ public class TicTacToeWebUI {
         if (port != null){
             setPort(Integer.valueOf(port));
         }
-        else {
-            setPort(8080);
-        }
         final TicTacToeGame game = new TicTacToeGame();
     	get(new Route(":param") {
             @Override
