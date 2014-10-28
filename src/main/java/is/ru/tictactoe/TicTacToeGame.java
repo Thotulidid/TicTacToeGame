@@ -131,31 +131,22 @@ public class TicTacToeGame {
 			gameBoard[m.getPosition()] = m.getPlayer();
 		}
 		
-		if(gameBoard[0] == gameBoard[1] && gameBoard[0] == gameBoard[2]){
-			endGame(gameBoard[0]);
-			return true;
+		// Check columns and rows for winner
+		for(int i = 0; i < 3; i++){
+			int row = 3 * i;
+			int col = i;
+			if(gameBoard[row] == gameBoard[row + 1] && gameBoard[row] == gameBoard[row + 2]){
+				endGame(gameBoard[row]);
+				return true;
+			}
+			else if(gameBoard[col] == gameBoard[col + 3] && gameBoard[col] == gameBoard[col + 6]){
+				endGame(gameBoard[col]);
+				return true;
+			}
 		}
-		else if(gameBoard[3] == gameBoard[4] && gameBoard[3] == gameBoard[5]){
-			endGame(gameBoard[3]);
-			return true;
-		}
-		else if(gameBoard[6] == gameBoard[7] && gameBoard[6] == gameBoard[8]){
-			endGame(gameBoard[6]);
-			return true;
-		}
-		else if(gameBoard[0] == gameBoard[3] && gameBoard[0] == gameBoard[6]){
-			endGame(gameBoard[0]);
-			return true;
-		}
-		else if(gameBoard[1] == gameBoard[4] && gameBoard[1] == gameBoard[7]){
-			endGame(gameBoard[1]);
-			return true;
-		}
-		else if(gameBoard[2] == gameBoard[5] && gameBoard[2] == gameBoard[8]){
-			endGame(gameBoard[2]);
-			return true;
-		}
-		else if(gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8]){
+		
+		// Check the diagonals
+		if(gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8]){
 			endGame(gameBoard[0]);
 			return true;
 		}
