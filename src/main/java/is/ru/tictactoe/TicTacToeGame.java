@@ -89,6 +89,9 @@ public class TicTacToeGame {
      * was successful
      */
 	public boolean move(Move move){
+		if(move == null){
+			return false;
+		}
 		if(board.contains(move) || move.getPlayer() != this.whoHasTurn || this.gameIsOver){
 			return false;
 		}

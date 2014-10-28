@@ -22,6 +22,41 @@ public class TicTacToeWebUI implements SparkApplication {
     	html.append("<html><head><title>TicTacToeWebGame</title></head><body>");
 	}
     
+	private void buildFoot(StringBuilder html){
+    	html.append("<div><a href=/reset/game >Reset game</a></div>");
+    	html.append("</body></html>");
+	}
+	
+	private void buildBoard(StringBuilder html, TicTacToeGame game){
+		Move[] board = game.getBoard(); 
+		for(int i = 0; i < 9; i++){
+    		String color = "#FFF";
+    		if(i % 2 == 0){
+    			color = "#DDD";
+    		}
+    		if(board[i] == null){
+    			html.append("<a href=/" + i + " ><div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">&nbsp;</div></a>");
+    		}
+    		else{
+    			html.append("<div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">" + board[i].getPlayer() + "</div>");
+    		}
+    	}
+	}
+	
+	private void buildMessage(StringBuilder html, TicTacToeGame game){
+		if(game.gameOver()){
+    		if(game.winner() == 'D'){
+    			html.append("<h1>The game finished in a draw.</h1>");
+    		}
+    		else{            			
+    			html.append("<h1>The winner is:" + game.winner() + "</h1>");
+    		}
+    	}
+    	else{
+    		html.append("<h1>" + game.hasMove() + "'s turn to move!</h1>");
+    	}
+	}
+	
 	@Override
 	public void init() {
 		final TicTacToeGame game = new TicTacToeGame();
@@ -30,41 +65,20 @@ public class TicTacToeWebUI implements SparkApplication {
             public Object handle(Request request, Response response) {
             	StringBuilder html = new StringBuilder();
             	buildHead(html);
-            	Move move;
+            	
+            	Move move = null;
             	try{
             		int position = Integer.parseInt(request.params(":param"));
             		move = new Move(position, game.hasMove());
             	}
             	catch(Exception ex){
-            		return "Out of bounds";
+            		html.append("<h1>Out of bounds</h1>");
             	}
+            	
             	game.move(move);
-            	Move[] board = game.getBoard(); 
-            	if(game.gameOver()){
-            		if(game.winner() == 'D'){
-            			html.append("<p style=\"font-size: 350%; font-weight: bold;\">The game finished in a draw.</p>");
-            		}
-            		else{            			
-            			html.append("<p style=\"font-size: 350%; font-weight: bold;\">The winner is:" + game.winner() + "</p>");
-            		}
-            	}
-            	else{
-            		html.append("<p style=\"font-size: 350%; font-weight: bold;\">" + game.hasMove() + "'s turn to move!</p>");
-            	}
-            	for(int i = 0; i < 9; i++){
-            		String color = "#FFF";
-            		if(i % 2 == 0){
-            			color = "#DDD";
-            		}
-            		if(board[i] == null){
-            			html.append("<a href=/" + i + " ><div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">&nbsp;</div></a>");
-            		}
-            		else{
-            			html.append("<div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">" + board[i].getPlayer() + "</div>");
-            		}
-            	}
-            	html.append("<a href=/reset/game >Reset game</a>");
-            	html.append("</body></html>");
+            	buildMessage(html, game);
+            	buildBoard(html, game);
+            	buildFoot(html);
             	if(game.gameOver()){
             		game.resetGame();
             	}
@@ -76,38 +90,11 @@ public class TicTacToeWebUI implements SparkApplication {
     	get(new Route("/") {
             @Override
             public Object handle(Request request, Response response) {
-            	
             	StringBuilder html = new StringBuilder();
-            	html.append("<html><head><title>TicTacToeWebGame</title></head><body>");
-            	Move[] board = game.getBoard(); 
-            	if(game.gameOver()){
-            		if(game.winner() == 'D'){
-            			html.append("<p style=\"font-size: 350%; font-weight: bold;\">The game finished in a draw.</p>");
-            		}
-            		else{            			
-            			html.append("<p style=\"font-size: 350%; font-weight: bold;\">The winner is:" + game.winner() + "</p>");
-            		}
-            	}
-            	else{
-            		html.append("<p style=\"font-size: 350%; font-weight: bold;\">" + game.hasMove() + "'s turn to move!</p>");
-            	}
-            	for(int i = 0; i < 9; i++){
-            		String color = "#FFF";
-            		if(i % 2 == 0){
-            			color = "#DDD";
-            		}
-            		if(board[i] == null){
-            			html.append("<a href=/" + i + " ><div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">&nbsp;</div></a>");
-            		}
-            		else{
-            			html.append("<div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">" + board[i].getPlayer() + "</div>");
-            		}
-            	}
-            	html.append("<a href=/reset/game >Reset game</a>");
-            	html.append("</body></html>");
-            	if(game.gameOver()){
-            		game.resetGame();
-            	}
+            	buildHead(html);
+            	buildMessage(html, game);
+            	buildBoard(html, game);
+            	buildFoot(html);
             	return html.toString();
             }
         });
@@ -116,25 +103,8 @@ public class TicTacToeWebUI implements SparkApplication {
             @Override
             public Object handle(Request request, Response response) {
             	game.resetGame();
-            	StringBuilder html = new StringBuilder();
-            	html.append("<html><head><title>TicTacToeWebGame</title></head><body>");
-            	Move[] board = game.getBoard(); 
-        		html.append("<p style=\"font-size: 350%; font-weight: bold;\">" + game.hasMove() + "'s turn to move!</p>");
-            	for(int i = 0; i < 9; i++){
-            		String color = "#FFF";
-            		if(i % 2 == 0){
-            			color = "#DDD";
-            		}
-            		if(board[i] == null){
-            			html.append("<a href=/" + i + " ><div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">&nbsp;</div></a>");
-            		}
-            		else{
-            			html.append("<div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">" + board[i].getPlayer() + "</div>");
-            		}
-            	}
-            	html.append("<a href=/reset/game >Reset game</a>");
-            	html.append("</body></html>");
-            	return html.toString();
+            	response.redirect("/");
+            	return "";
             }
         });
 	}
