@@ -1,1 +1,1 @@
-web: build/install/TicTacToeGame/bin/TicTacToeGameWebUI
+web: build/install/TicTacToeGame/bin/TicTacToeGame
