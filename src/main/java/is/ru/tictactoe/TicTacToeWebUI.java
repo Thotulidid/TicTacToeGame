@@ -5,21 +5,31 @@ import spark.Request;
 import spark.Route;
 import spark.Response;
 import static spark.Spark.setPort;
+import spark.servlet.SparkApplication;
  
-public class TicTacToeWebUI {
+public class TicTacToeWebUI implements SparkApplication {
     public static void main(String[] args) {
-        //SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
+        SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
         String port = System.getenv("PORT");
         if (port != null){
             setPort(Integer.valueOf(port));
         }
-        final TicTacToeGame game = new TicTacToeGame();
+        
+        TicTacToeWebUI.init();
+    }
+    
+	private void buildHead(StringBuilder html) {
+    	html.append("<html><head><title>TicTacToeWebGame</title></head><body>");
+	}
+    
+	@Override
+	public void init() {
+		final TicTacToeGame game = new TicTacToeGame();
     	get(new Route(":param") {
             @Override
             public Object handle(Request request, Response response) {
-            	
             	StringBuilder html = new StringBuilder();
-            	html.append("<html><head><title>TicTacToeWebGame</title></head><body>");
+            	buildHead(html);
             	Move move;
             	try{
             		int position = Integer.parseInt(request.params(":param"));
@@ -60,6 +70,7 @@ public class TicTacToeWebUI {
             	}
             	return html.toString();
             }
+
         });
     	
     	get(new Route("/") {
@@ -126,5 +137,5 @@ public class TicTacToeWebUI {
             	return html.toString();
             }
         });
-    }
+	}
 }
