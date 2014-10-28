@@ -2,9 +2,16 @@ package is.ru.tictactoe;
 
 import static spark.Spark.*;
 import spark.*;
+import spark.servlet.SparkApplication;
+
  
-public class TicTacToeWebUI {
+public class TicTacToeWebUI implements SparkApplication {
     public static void main(String[] args) {
+        SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
+        String port = System.getenv("PORT");
+        if (port != null){
+            setPort(Integer.valueOf(port));
+        }
         final TicTacToeGame game = new TicTacToeGame();
     	get(new Route(":param") {
             @Override
