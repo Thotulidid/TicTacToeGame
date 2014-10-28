@@ -12,6 +12,7 @@
 hs_err_pid*
 
 # Ignore gradle files
+.gradle/
 build/
 
 # Ignore eclipse files
