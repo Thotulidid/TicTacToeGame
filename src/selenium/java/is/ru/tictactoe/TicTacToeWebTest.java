@@ -89,6 +89,22 @@ public class TicTacToeWebTest {
     assertEquals("X's turn to move!", driver.findElement(By.cssSelector("h1")).getText());
   }
   
+    @Test
+  public void testResetGame() throws Exception {
+    driver.get(baseUrl + "/");
+    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.id("3")).click();
+    driver.findElement(By.id("0")).click();
+    driver.findElement(By.id("4")).click();
+    driver.findElement(By.linkText("Reset game")).click();
+    // Warning: assertTextNotPresent may require manual changes
+    assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*id=3[\\s\\S]*$"));
+    // Warning: assertTextNotPresent may require manual changes
+    assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*id=0[\\s\\S]*$"));
+    // Warning: assertTextNotPresent may require manual changes
+    assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*id=4[\\s\\S]*$"));
+  }
+  
   
   @After
   public void tearDown() throws Exception {
