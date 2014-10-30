@@ -97,9 +97,9 @@ public class TicTacToeWebTest {
     driver.findElement(By.id("0")).click();
     driver.findElement(By.id("4")).click();
     driver.findElement(By.linkText("Reset game")).click();
-    assertEquals("", driver.findElement(By.id("3")).getText());
-    assertEquals("", driver.findElement(By.id("0")).getText());
-    assertEquals("", driver.findElement(By.id("4")).getText());
+    assertEquals(" ", driver.findElement(By.id("3")).getText());
+    assertEquals(" ", driver.findElement(By.id("0")).getText());
+    assertEquals(" ", driver.findElement(By.id("4")).getText());
   }
   
   
