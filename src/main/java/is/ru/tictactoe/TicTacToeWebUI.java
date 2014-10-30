@@ -1,6 +1,7 @@
 package is.ru.tictactoe;
 
 import static spark.Spark.get;
+import static spark.Spark.staticFileLocation;
 import spark.Request;
 import spark.Route;
 import spark.Response;
@@ -9,7 +10,8 @@ import spark.servlet.SparkApplication;
  
 public class TicTacToeWebUI implements SparkApplication {
     public static void main(String[] args) {
-        SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
+    	staticFileLocation("/public");
+    	SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
         String port = System.getenv("PORT");
         if (port != null){
             setPort(Integer.valueOf(port));
