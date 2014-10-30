@@ -33,20 +33,28 @@ public class TicTacToeWebTest {
 	  }
 
   @Test
-  public void testAsdf() throws Exception {
+  public void testDraw() throws Exception {
     driver.get(baseUrl + "/");
     driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.id("0")).click();
     driver.findElement(By.id("4")).click();
-    driver.findElement(By.id("8")).click();
+    driver.findElement(By.id("3")).click();
     driver.findElement(By.id("6")).click();
+    driver.findElement(By.id("7")).click();
+    driver.findElement(By.id("8")).click();
     driver.findElement(By.id("5")).click();
+    driver.findElement(By.id("1")).click();
     driver.findElement(By.id("2")).click();
-    assertEquals("The winner is:X", driver.findElement(By.cssSelector("h1")).getText());
-    assertEquals("X", driver.findElement(By.id("4")).getText());
-    assertEquals("X", driver.findElement(By.id("6")).getText());
-    assertEquals("X", driver.findElement(By.id("2")).getText());
+    assertEquals("The game finished in a draw.", driver.findElement(By.cssSelector("h1")).getText());
+    assertEquals("X", driver.findElement(By.id("0")).getText());
+    assertEquals("O", driver.findElement(By.id("4")).getText());
+    assertEquals("X", driver.findElement(By.id("3")).getText());
+    assertEquals("O", driver.findElement(By.id("6")).getText());
+    assertEquals("X", driver.findElement(By.id("7")).getText());
     assertEquals("O", driver.findElement(By.id("8")).getText());
-    assertEquals("O", driver.findElement(By.id("5")).getText());
+    assertEquals("X", driver.findElement(By.id("5")).getText());
+    assertEquals("O", driver.findElement(By.id("1")).getText());
+    assertEquals("X", driver.findElement(By.id("2")).getText());
   }
 
   @After
