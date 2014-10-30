@@ -73,6 +73,23 @@ public class TicTacToeWebTest {
     assertEquals("X", driver.findElement(By.id("4")).getText());
     assertEquals("X", driver.findElement(By.id("8")).getText());
   }
+  
+    @Test
+  public void testXSTurn() throws Exception {
+    driver.get(baseUrl + "/");
+    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.id("0")).click();
+    driver.findElement(By.id("4")).click();
+    driver.findElement(By.id("1")).click();
+    driver.findElement(By.id("5")).click();
+    driver.findElement(By.id("3")).click();
+    driver.findElement(By.id("7")).click();
+    driver.findElement(By.id("6")).click();
+    driver.findElement(By.linkText("Reset game")).click();
+    assertEquals("X's turn to move!", driver.findElement(By.cssSelector("h1")).getText());
+  }
+  
+  
   @After
   public void tearDown() throws Exception {
     driver.quit();
