@@ -89,7 +89,7 @@ public class TicTacToeWebTest {
     assertEquals("X's turn to move!", driver.findElement(By.cssSelector("h1")).getText());
   }
   
-    @Test
+   @Test
   public void testResetGame() throws Exception {
     driver.get(baseUrl + "/");
     driver.findElement(By.linkText("Reset game")).click();
@@ -97,12 +97,9 @@ public class TicTacToeWebTest {
     driver.findElement(By.id("0")).click();
     driver.findElement(By.id("4")).click();
     driver.findElement(By.linkText("Reset game")).click();
-    // Warning: assertTextNotPresent may require manual changes
-    assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*id=3[\\s\\S]*$"));
-    // Warning: assertTextNotPresent may require manual changes
-    assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*id=0[\\s\\S]*$"));
-    // Warning: assertTextNotPresent may require manual changes
-    assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*id=4[\\s\\S]*$"));
+    assertEquals("", driver.findElement(By.id("3")).getText());
+    assertEquals("", driver.findElement(By.id("0")).getText());
+    assertEquals("", driver.findElement(By.id("4")).getText());
   }
   
   
