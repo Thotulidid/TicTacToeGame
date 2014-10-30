@@ -4,9 +4,9 @@ script:
 - ./gradlew check seleniumXvfb -x selenium
 
 deploy:
-	provider: heroku
-	api_key: 600638ea-78da-42d7-81f1-2cc4d6f8e2e1
-	app: tttweb
-	on: table
-	skip_cleanup: true
-	strategy: git
+    provider: heroku
+    api_key: 600638ea-78da-42d7-81f1-2cc4d6f8e2e1
+    app: tttweb
+    on: table
+    skip_cleanup: true
+    strategy: git
