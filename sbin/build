@@ -2,4 +2,4 @@
 
 ./gradlew check seleniumXvfb -x selenium
 ./gradlew javadoc
-mv build/docs src/main/java/
+mv build/docs src/main/
