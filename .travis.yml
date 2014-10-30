@@ -10,7 +10,7 @@ deploy:
     on: table
     skip_cleanup: true
     strategy: git
-	
+
 notifications:
   email:
     recipients:
