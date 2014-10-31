@@ -61,11 +61,6 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.1'
 }
 
-task stage {dependsOn installApp, seleniumXvfb}
-
-
-//test.finalizedBy(project.tasks.cobertura)
-
 task selenium(type: Test, dependsOn: installApp) {
     testClassesDir = sourceSets.selenium.output.classesDir
     classpath = sourceSets.selenium.runtimeClasspath
@@ -100,3 +95,5 @@ task seleniumXvfb(type: Test, dependsOn: installApp) {
         'sbin/xvfb stop'.execute()
     }
 }
+
+task stage(dependsOn: seleniumXvfb) {dependsOn installApp}
