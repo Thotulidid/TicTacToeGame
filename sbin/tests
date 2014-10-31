@@ -2,16 +2,16 @@
 
 if ! ./gradlew checkstyleMain checkstyleTest; then
   echo "Style check failed"
-  exit
+  exit 1
 fi
 
 if ! ./gradlew test; then
   echo "Unit tests failed"
-  exit
+  exit 1
 fi
 
 if ! ./gradlew seleniumXvfb; then
   echo "Functional tests failed"
-  exit
+  exit 1
 fi
 
