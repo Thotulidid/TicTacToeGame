@@ -28,7 +28,7 @@ public class TicTacToeWebTest {
 	  @Before
 	  public void setUp() throws Exception {
 	    driver = new FirefoxDriver();
-	    baseUrl = "http://localhost:4567/";
+	    baseUrl = "https://tttwebstage.herokuapp.com/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
