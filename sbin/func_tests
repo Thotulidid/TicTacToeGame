@@ -8,5 +8,4 @@ if ! ./gradlew seleniumXvfb; then
   exit 1
 fi
 
-git remote add production git@heroku.com:tttweb.git
-yes | git push production table:master
+./sbin/deploy
