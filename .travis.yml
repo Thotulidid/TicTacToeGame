@@ -1,14 +1,12 @@
 language: java
-before_script:
-  - echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 script:
 - ./sbin/tests
 
 before_deploy:
-  - echo "----------------------------"
-  - echo "Deploying to staging server."
-  - echo "----------------------------"
+  - ----------------------------
+  - Deploying to staging server.
+  - ----------------------------
 deploy:
     provider: heroku
     api_key: 600638ea-78da-42d7-81f1-2cc4d6f8e2e1
