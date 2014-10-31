@@ -1,4 +1,6 @@
 language: java
+before_script:
+  - echo -e "Host heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 script:
 - ./sbin/tests
