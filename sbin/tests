@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if ! ./gradlew checkstyleMain checkstyleTest; then
+  echo "Style check failed"
+  exit
+fi
+
+if ! ./gradlew test; then
+  echo "Unit tests failed"
+  exit
+fi
+
+if ! ./gradlew seleniumXvfb; then
+  echo "Functional tests failed"
+  exit
+fi
+

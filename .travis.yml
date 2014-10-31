@@ -1,7 +1,7 @@
 language: java
 
 script:
-- ./gradlew checkstyleMain checkstyleTest && ./gradlew test && ./gradlew seleniumXvfb 
+- ./sbin/tests
 
 deploy:
     provider: heroku
