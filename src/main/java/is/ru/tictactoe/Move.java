@@ -68,4 +68,9 @@ public class Move {
 
         return sameSame;
     }
+	
+	public int hashCode() {
+		  assert false : "hashCode not designed";
+		  return 42; // any arbitrary constant will do
+	}
 }

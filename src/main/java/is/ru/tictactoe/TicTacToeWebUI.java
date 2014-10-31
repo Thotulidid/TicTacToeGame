@@ -14,7 +14,7 @@ public class TicTacToeWebUI implements SparkApplication {
     	SparkApplication TicTacToeWebUI = new TicTacToeWebUI();
         String port = System.getenv("PORT");
         if (port != null){
-            setPort(Integer.valueOf(port));
+            setPort(Integer.parseInt(port));
         }
         
         TicTacToeWebUI.init();
