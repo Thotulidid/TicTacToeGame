@@ -11,7 +11,7 @@ deploy:
     skip_cleanup: true
     strategy: git
 after_deploy:
-  - ./gradlew seleniumXvfb
+  - ./sbin/func_tests
 
 
 notifications:

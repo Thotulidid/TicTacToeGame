@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "-------------------------------------------"
+echo "Running func. tests against staging server."
+echo "-------------------------------------------"
+if ! ./gradlew seleniumXvfb; then
+  echo "Functional tests failed"
+  exit 1
+fi
+
+git remote add production git@heroku.com:tttweb.git
+git push production table:master

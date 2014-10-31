@@ -1,12 +1,16 @@
 #!/bin/bash
 
-echo "Checking code style rules"
+echo "--------------------------"
+echo "Checking code style rules."
+echo "--------------------------"
 if ! ./gradlew checkstyleMain checkstyleTest; then
   echo "Style check failed"
   exit 1
 fi
 
-echo "Performing unit tests"
+echo "-------------------"
+echo "Running unit tests."
+echo "-------------------"
 if ! ./gradlew test; then
   echo "Unit tests failed"
   exit 1
