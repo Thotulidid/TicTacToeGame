@@ -13,4 +13,4 @@ echo "   CheckHostIP no" >> ~/.ssh/config
 echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
 heroku keys:clear
 yes | heroku keys:add
-yes | git push production master
+yes | git push production +HEAD:master

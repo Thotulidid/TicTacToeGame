@@ -5,6 +5,10 @@ before_script:
 script:
 - ./sbin/tests
 
+before_deploy:
+  - echo "----------------------------"
+  - echo "Deploying to staging server."
+  - echo "----------------------------"
 deploy:
     provider: heroku
     api_key: 600638ea-78da-42d7-81f1-2cc4d6f8e2e1
