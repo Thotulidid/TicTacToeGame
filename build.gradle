@@ -26,7 +26,6 @@ jar {
    }
 }
 
-
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
@@ -65,7 +64,7 @@ task wrapper(type: Wrapper) {
 task stage {dependsOn installApp}
 
 
-test.finalizedBy(project.tasks.cobertura)
+//test.finalizedBy(project.tasks.cobertura)
 
 task selenium(type: Test, dependsOn: installApp) {
     testClassesDir = sourceSets.selenium.output.classesDir
