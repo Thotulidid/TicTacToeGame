@@ -102,3 +102,7 @@ task seleniumXvfb(type: Test, dependsOn: installApp) {
         'sbin/xvfb stop'.execute()
     }
 }
+
+findbugs {
+    excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
+}
