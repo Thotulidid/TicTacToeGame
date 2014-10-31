@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "------------------------------"
+echo "Deploying to production server"
+echo "------------------------------"
+
 gem install heroku
 git remote add production git@heroku.com:tttweb.git
 export HEROKU_API_KEY=600638ea-78da-42d7-81f1-2cc4d6f8e2e1
@@ -9,4 +13,4 @@ echo "   CheckHostIP no" >> ~/.ssh/config
 echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
 heroku keys:clear
 yes | heroku keys:add
-yes | git push production table:master
+yes | git push production master
