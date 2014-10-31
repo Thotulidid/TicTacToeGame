@@ -96,4 +96,10 @@ task seleniumXvfb(type: Test, dependsOn: installApp) {
     }
 }
 
-task stage(dependsOn: seleniumXvfb) {dependsOn installApp}
+task stage {dependsOn installApp}
+
+cobertura {
+  // coberturaVersion = '2.1.0-SNAPSHOT'
+	coverageCheckLineRate = 3
+	coverageCheckHaltOnFailure = false
+}

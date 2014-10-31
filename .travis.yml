@@ -1,7 +1,7 @@
 language: java
 
 script:
-- ./gradlew check seleniumXvfb -x selenium
+- ./gradlew checkstyleMain checkstyleTest && ./gradlew test && ./gradlew seleniumXvfb 
 
 deploy:
     provider: heroku
