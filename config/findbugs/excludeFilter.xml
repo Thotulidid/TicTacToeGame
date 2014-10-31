@@ -1,0 +1,11 @@
+ <FindBugsFilter>
+	 <Match>
+	   <Class name="is.ru.tictactoe.MoveTest" />
+	   <Bug pattern="DLS_DEAD_LOCAL_STORE" />
+	 </Match>
+
+	  <Match>
+	   <Class name="is.ru.tictactoe.TicTacToeGameTest" />
+	   <Bug pattern="DLS_DEAD_LOCAL_STORE" />
+	 </Match>
+</FindBugsFilter>
