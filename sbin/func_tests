@@ -9,4 +9,4 @@ if ! ./gradlew seleniumXvfb; then
 fi
 
 git remote add production git@heroku.com:tttweb.git
-git push production table:master
+yes | git push production table:master
