@@ -29,7 +29,7 @@ public class TicTacToeGameTest {
 	public void MoveWithPositionAndPlayerReturnsCorrectMove() {
 		TicTacToeGame game = new TicTacToeGame();
 		Move newMove = game.move(7, 'X');
-		assertEquals('X', newMove.getPlayer());
+		assertEquals('O', newMove.getPlayer());
 		assertEquals(7, newMove.getPosition());
 	}
 	
