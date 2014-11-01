@@ -19,7 +19,7 @@ fi
 echo "------------------------"
 echo "Checking code coverage."
 echo "------------------------"
-if ! ./gradlew coberturaCheck; then
+if ! ./gradlew performCoverageCheck; then
   echo "Code coverage is insufficent."
   exit 1
 fi
