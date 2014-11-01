@@ -17,6 +17,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
 
 mainClassName = "is.ru.tictactoe.TicTacToeWebUI"
 
@@ -100,6 +101,9 @@ task stage {dependsOn installApp}
 
 cobertura {
   // coberturaVersion = '2.1.0-SNAPSHOT'
-	coverageCheckLineRate = 3
-	coverageCheckHaltOnFailure = false
+	coverageCheckLineRate = 75
+	coverageCheckHaltOnFailure = true
+	
+findbugs {
+    excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
 }
