@@ -118,6 +118,20 @@ public class TicTacToeWebTest {
     assertEquals("O", driver.findElement(By.id("8")).getText());
   }
   
+   @Test
+  public void testWinnerHorizontal() throws Exception {
+    driver.get(baseUrl + "/");
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    driver.findElement(By.id("0")).click();
+    driver.findElement(By.id("4")).click();
+    driver.findElement(By.id("6")).click();
+    driver.findElement(By.id("1")).click();
+    driver.findElement(By.id("3")).click();
+    assertEquals("The winner is:X", driver.findElement(By.cssSelector("h1")).getText());
+    assertEquals("X", driver.findElement(By.id("0")).getText());
+    assertEquals("X", driver.findElement(By.id("3")).getText());
+    assertEquals("X", driver.findElement(By.id("6")).getText());
+  }
   
   @After
   public void tearDown() throws Exception {
