@@ -33,6 +33,19 @@ public class TicTacToeWebTest {
 	  }
 
   @Test
+  public void testResetGame() throws Exception {
+    driver.get(baseUrl + "/");
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    driver.findElement(By.id("3")).click();
+    driver.findElement(By.id("0")).click();
+    driver.findElement(By.id("4")).click();
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    assertEquals(" ", driver.findElement(By.id("3")).getText());
+    assertEquals(" ", driver.findElement(By.id("0")).getText());
+    assertEquals(" ", driver.findElement(By.id("4")).getText());
+  }
+	  
+  @Test
   public void testDraw() throws Exception { 
 	driver.get(baseUrl + "/");
 	driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
@@ -74,7 +87,7 @@ public class TicTacToeWebTest {
     assertEquals("X", driver.findElement(By.id("8")).getText());
   }
   
-    @Test
+  @Test
   public void testXSTurn() throws Exception {
     driver.get(baseUrl + "/");
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
@@ -89,17 +102,20 @@ public class TicTacToeWebTest {
     assertEquals("X's turn to move!", driver.findElement(By.cssSelector("h1")).getText());
   }
   
-   @Test
-  public void testResetGame() throws Exception {
+  @Test
+  public void testWinnerVertical() throws Exception {
     driver.get(baseUrl + "/");
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    driver.findElement(By.id("3")).click();
-    driver.findElement(By.id("0")).click();
     driver.findElement(By.id("4")).click();
-    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    assertEquals(" ", driver.findElement(By.id("3")).getText());
-    assertEquals(" ", driver.findElement(By.id("0")).getText());
-    assertEquals(" ", driver.findElement(By.id("4")).getText());
+    driver.findElement(By.id("6")).click();
+    driver.findElement(By.id("0")).click();
+    driver.findElement(By.id("8")).click();
+    driver.findElement(By.id("2")).click();
+    driver.findElement(By.id("7")).click();
+    assertEquals("The winner is:O", driver.findElement(By.cssSelector("h1")).getText());
+    assertEquals("O", driver.findElement(By.id("6")).getText());
+    assertEquals("O", driver.findElement(By.id("7")).getText());
+    assertEquals("O", driver.findElement(By.id("8")).getText());
   }
   
   
