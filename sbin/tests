@@ -16,14 +16,6 @@ if ! ./gradlew findbugsMain findbugsTest; then
   exit 1
 fi
 
-echo "------------------------"
-echo "Checking code coverage."
-echo "------------------------"
-if ! ./gradlew performCoverageCheck; then
-  echo "Code coverage is insufficent."
-  exit 1
-fi
-
 echo "-------------------"
 echo "Running unit tests."
 echo "-------------------"
