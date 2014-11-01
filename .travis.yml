@@ -1,4 +1,27 @@
 language: java
 
 script:
-- ./gradlew check seleniumXvfb -x selenium
+- ./sbin/tests
+
+before_deploy:
+  - echo '----------------------------'
+  - echo 'Deploying to staging server.'
+  - echo '----------------------------'
+deploy:
+    provider: heroku
+    api_key: 600638ea-78da-42d7-81f1-2cc4d6f8e2e1
+    app: tttwebstage
+    on:
+        all_branches: true
+    skip_cleanup: true
+    strategy: git
+after_deploy:
+  - ./sbin/func_tests
+
+
+notifications:
+  email:
+    recipients:
+      - bjornb13@ru.is
+    on_success: change # default: change
+    on_failure: always # default: always

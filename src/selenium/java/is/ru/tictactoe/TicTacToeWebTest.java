@@ -28,14 +28,14 @@ public class TicTacToeWebTest {
 	  @Before
 	  public void setUp() throws Exception {
 	    driver = new FirefoxDriver();
-	    baseUrl = "http://localhost:4567/";
+	    baseUrl = "https://tttwebstage.herokuapp.com/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
   @Test
-  public void testDraw() throws Exception {
-    driver.get(baseUrl + "/");
-    driver.findElement(By.linkText("Reset game")).click();
+  public void testDraw() throws Exception { 
+	driver.get(baseUrl + "/");
+	driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     driver.findElement(By.id("0")).click();
     driver.findElement(By.id("4")).click();
     driver.findElement(By.id("3")).click();
@@ -60,7 +60,7 @@ public class TicTacToeWebTest {
   @Test
   public void testWinnerX() throws Exception {
     driver.get(baseUrl + "/");
-    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     driver.findElement(By.id("4")).click();
     driver.findElement(By.id("5")).click();
     driver.findElement(By.id("2")).click();
@@ -77,7 +77,7 @@ public class TicTacToeWebTest {
     @Test
   public void testXSTurn() throws Exception {
     driver.get(baseUrl + "/");
-    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     driver.findElement(By.id("0")).click();
     driver.findElement(By.id("4")).click();
     driver.findElement(By.id("1")).click();
@@ -92,11 +92,11 @@ public class TicTacToeWebTest {
    @Test
   public void testResetGame() throws Exception {
     driver.get(baseUrl + "/");
-    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     driver.findElement(By.id("3")).click();
     driver.findElement(By.id("0")).click();
     driver.findElement(By.id("4")).click();
-    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     assertEquals(" ", driver.findElement(By.id("3")).getText());
     assertEquals(" ", driver.findElement(By.id("0")).getText());
     assertEquals(" ", driver.findElement(By.id("4")).getText());

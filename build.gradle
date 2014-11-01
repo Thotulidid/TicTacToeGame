@@ -17,6 +17,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
 
 mainClassName = "is.ru.tictactoe.TicTacToeWebUI"
 
@@ -25,7 +26,6 @@ jar {
         attributes("Main-Class": "is.ru.tictactoe.TicTacToeWebUI")
    }
 }
-
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -62,11 +62,6 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.1'
 }
 
-task stage {dependsOn installApp}
-
-
-test.finalizedBy(project.tasks.cobertura)
-
 task selenium(type: Test, dependsOn: installApp) {
     testClassesDir = sourceSets.selenium.output.classesDir
     classpath = sourceSets.selenium.runtimeClasspath
@@ -100,4 +95,16 @@ task seleniumXvfb(type: Test, dependsOn: installApp) {
     doLast {
         'sbin/xvfb stop'.execute()
     }
+}
+
+task stage {dependsOn installApp}
+
+cobertura {
+  // coberturaVersion = '2.1.0-SNAPSHOT'
+	coverageCheckLineRate = 75
+	coverageCheckHaltOnFailure = true
+}
+
+findbugs {
+    excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
 }
