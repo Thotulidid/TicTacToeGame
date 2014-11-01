@@ -35,7 +35,7 @@ public class TicTacToeWebTest {
   @Test
   public void testAsdf() throws Exception {
     driver.get(baseUrl + "/");
-    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     driver.findElement(By.id("4")).click();
     driver.findElement(By.id("8")).click();
     driver.findElement(By.id("6")).click();

@@ -1,6 +1,7 @@
 package is.ru.tictactoe;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 import spark.Request;
 import spark.Route;
@@ -25,22 +26,19 @@ public class TicTacToeWebUI implements SparkApplication {
 	}
     
 	private void buildFoot(StringBuilder html){
-    	html.append("<div><a href=/reset/game >Reset game</a></div>");
+    	html.append("<form action=\"/reset/game\" method=\"post\">");
+		html.append("<input type=\"submit\" value=\"Reset game\"></form>");
     	html.append("</body></html>");
 	}
 	
 	private void buildBoard(StringBuilder html, TicTacToeGame game){
 		Move[] board = game.getBoard(); 
 		for(int i = 0; i < 9; i++){
-    		String color = "#FFF";
-    		if(i % 2 == 0){
-    			color = "#DDD";
-    		}
     		if(board[i] == null){
-    			html.append("<a href=/" + i + " ><div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">&nbsp;</div></a>");
+    			html.append("<a href=/" + i + " ><div id=" + i + " style=\"border-style: solid; width: 150px; height: 150px; float: left;\">&nbsp;</div></a>");
     		}
     		else{
-    			html.append("<div id=" + i + " style=\"background-color: " + color + "; width: 33%; height: 25%; float: left; font-size: 200%;\">" + board[i].getPlayer() + "</div>");
+    			html.append("<div id=" + i + " style=\"background-image: url('imgs/" + board[i].getPlayer() + ".png'); border-style: solid; width: 150px; height: 150px; float: left; color: #FFF;\">" + board[i].getPlayer() + "</div>");
     		}
     	}
 	}
@@ -101,7 +99,7 @@ public class TicTacToeWebUI implements SparkApplication {
             }
         });
     	
-    	get(new Route("/reset/game") {
+    	post(new Route("/reset/game") {
             @Override
             public Object handle(Request request, Response response) {
             	game.resetGame();
