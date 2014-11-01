@@ -85,7 +85,7 @@ public class TicTacToeWebTest {
     driver.findElement(By.id("3")).click();
     driver.findElement(By.id("7")).click();
     driver.findElement(By.id("6")).click();
-    driver.findElement(By.linkText("Reset game")).click();
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
     assertEquals("X's turn to move!", driver.findElement(By.cssSelector("h1")).getText());
   }
   
