@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./gradlew javadoc cobertura -x selenium -x seleniumXvfb
