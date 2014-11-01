@@ -32,13 +32,21 @@ public class TicTacToeWebUI implements SparkApplication {
 	}
 	
 	private void buildBoard(StringBuilder html, TicTacToeGame game){
-		Move[] board = game.getBoard(); 
+		Move[] board = game.getBoard();
+		String imgur;
+
 		for(int i = 0; i < 9; i++){
     		if(board[i] == null){
     			html.append("<a href=/" + i + " ><div id=" + i + " style=\"border-style: solid; width: 150px; height: 150px; float: left;\">&nbsp;</div></a>");
     		}
     		else{
-    			html.append("<div id=" + i + " style=\"background-image: url('imgs/" + board[i].getPlayer() + ".png'); border-style: solid; width: 150px; height: 150px; float: left; color: #FFF;\">" + board[i].getPlayer() + "</div>");
+    			if(board[i].getPlayer() == 'X'){
+    				imgur = "http://i.imgur.com/4ylAJMt.png";
+    			}
+    			else{
+    				imgur = "http://i.imgur.com/6aCHJCV.png";
+    			}
+    			html.append("<div id=" + i + " style=\"background-image: url('" + imgur + "'); border-style: solid; width: 150px; height: 150px; float: left; color: #FFF;\">" + board[i].getPlayer() + "</div>");
     		}
     	}
 	}
