@@ -103,7 +103,8 @@ cobertura {
   // coberturaVersion = '2.1.0-SNAPSHOT'
 	coverageCheckLineRate = 75
 	coverageCheckHaltOnFailure = true
-	
+}
+
 findbugs {
     excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
 }
