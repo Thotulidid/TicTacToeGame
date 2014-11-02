@@ -35,7 +35,7 @@ If you wish to receive notifications via e-mail from travis you need edit the ``
 > **Note:** if your commit contains only trivial changes(e.g. changing markdown files) that dont affect the tests you can put ```[skip ci]``` anywhere in the commit message to make travis ignore the commit.
 
 ##Optional
-###Generationg documentation
+###Generating documentation
 To generate javadoc and code coverage reports run:
 * Linux
 
