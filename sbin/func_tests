@@ -9,3 +9,4 @@ if ! ./gradlew seleniumXvfb; then
 fi
 
 ./sbin/deploy
+./sbin/pubjavadoc
