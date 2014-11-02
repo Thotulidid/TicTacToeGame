@@ -1,16 +1,17 @@
 #!/bin/bash
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "javadocpub" ]; then
-  echo "------------------"
-  echo "Generating javadoc"
-  echo "------------------"
+  echo "---------------"
+  echo "Generating docs"
+  echo "---------------"
   
-  ./gradlew javadoc
+  ./gradlew javadoc cobertura -x selenium -x seleniumXvfb
   
-  echo -e "Publishing javadoc...\n"
+  echo -e "Publishing docs...\n"
 
   cp -R build/docs/javadoc $HOME/javadoc-latest
-
+  cp -R build/reports/cobertura $HOME/cobertura-latest
+  
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "travis-ci"
@@ -18,12 +19,14 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "javadocpub" ]
 
   cd gh-pages
   git rm -rf ./javadoc
+  git rm -rf ./cobertura
   cp -Rf $HOME/javadoc-latest ./javadoc
+  cp -Rf $HOME/cobertura-latest ./cobertura
   git add -f .
-  git commit -m "Lastest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
+  git commit -m "Latest docs on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
   git push -fq origin gh-pages > /dev/null
 
-  echo -e "Published Javadoc to gh-pages.\n"
+  echo -e "Published docs to gh-pages.\n"
   
 fi
 
