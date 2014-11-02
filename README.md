@@ -7,6 +7,10 @@ Simple TicTacToe Game engine written in java with an example webUi showing how t
 ##Documentation
 [Developers manual](docs/DEVELOPER.md)
 
+[Developers manual](docs/ADMIN.md)
+
+[Developers manual](docs/DESIGN.md)
+
 [JavaDoc](http://thotulidid.github.io/TicTacToeGame/javadoc)
 
 [CodeCovrage](http://thotulidid.github.io/TicTacToeGame/cobertura)
