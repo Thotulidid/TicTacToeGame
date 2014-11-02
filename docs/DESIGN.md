@@ -1,4 +1,6 @@
-**Design Report**
+#Hönnunarskýrsla
+
+Í upphaflegum drögum að hönnun leiksins voru tveir klasar skilgreindir, ```Move``` og ```TicTacToeGame```.
 
 Í ```Move``` klasanum eru skilgreindar stöður á ```TicTacToe``` leikborðinu. Klasinn hefur eigindin ```position``` og ```player```. ```Position``` er ```int``` og má taka gildi á bilinu ```0-8```. Það segir til um á hvaða reit þetta 
 ```move``` átti sér stað. ```Player``` er ```char``` breyta og má hafa gildið ```X``` eða ```O``` og segir til um hvaða leikmaður framkvæmdi aðgerðina. 
