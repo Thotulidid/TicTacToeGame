@@ -46,7 +46,7 @@ public class TicTacToeGame {
 	
 	/**
      * Calls the constructor of <tt>Move</tt> to construct
-     * a Move with <tt>position<tt> and the player who's turn
+     * a Move with <tt>position</tt> and the player who's turn
      * it is in the game
      * @param position the position of the move
      * @return The <tt>Move</tt> constructed or null if the move
@@ -64,7 +64,7 @@ public class TicTacToeGame {
 	
 	/**
      * Calls the constructor of <tt>Move</tt> to construct
-     * a Move with <tt>position<tt> and <tt>player<tt>.
+     * a Move with <tt>position</tt> and <tt>player</tt>.
      * @param position the position of the move
      * @param player the player of the move
      * @return The <tt>Move</tt> constructed or null if the move
@@ -82,10 +82,10 @@ public class TicTacToeGame {
 	
 	/**
      * Adds the <tt>Move</tt> as the next move of the
-     * <tt>TicTacToeGame<tt>
+     * <tt>TicTacToeGame</tt>
      * @param move the move to perform
      * @return <tt>false</tt> if the move could not
-     * be added to the game and <tt>true<tt> if the add 
+     * be added to the game and <tt>true</tt> if the add 
      * was successful
      */
 	public boolean move(Move move){
@@ -116,10 +116,10 @@ public class TicTacToeGame {
 	}
 	
 	/**
-     * Determines whether the <tt>TicTacToeGame<tt> is
+     * Determines whether the <tt>TicTacToeGame</tt> is
      * over or not
-     * @return <tt>true<tt> if the game is over and
-     * <tt>false<tt> otherwise.
+     * @return <tt>true</tt> if the game is over and
+     * <tt>false</tt> otherwise.
      */
 	public boolean gameOver(){
 		if(this.gameIsOver){
@@ -166,7 +166,7 @@ public class TicTacToeGame {
 	}
 
 	/**
-	 * ends the game and sets <tt>winner<tt>
+	 * ends the game and sets <tt>winner</tt>
 	 * as the winner of the game.
 	 * @param winner
 	 */
@@ -176,7 +176,7 @@ public class TicTacToeGame {
 	}
 	
 	/**
-	 * Returns the character array representing the <tt>TicTacToeGame<tt>
+	 * Returns the character array representing the <tt>TicTacToeGame</tt>
 	 * board
 	 * @return the character array representing the board
 	 */
@@ -189,14 +189,14 @@ public class TicTacToeGame {
 	}
 	
 	/**
-	 * Resets the <tt>TicTacToeGame<tt>
+	 * Resets the <tt>TicTacToeGame</tt>
 	 */
 	public void resetGame(){
 		initializeGame('X');
 	}
 	
 	/**
-	 * Returns Winner of the <tt>TicTacToeGame<tt>
+	 * Returns Winner of the <tt>TicTacToeGame</tt>
 	 * or 'D' if the game was drawn.
 	 * @return the winner of the game.
 	 */
