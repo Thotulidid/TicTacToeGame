@@ -26,7 +26,7 @@ public class TicTacToeWebUI implements SparkApplication {
 	}
     
 	private void buildFoot(StringBuilder html){
-    	html.append("<div style=\"position: fixed; top: 575px;\"><form action=\"/reset/game\" method=\"post\">");
+    	html.append("<div style=\"position: fixed; top: 65px;\"><form action=\"/reset/game\" method=\"post\">");
 		html.append("<input type=\"submit\" value=\"Reset game\"></form></div>");
     	html.append("</body></html>");
 	}
