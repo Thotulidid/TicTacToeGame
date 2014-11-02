@@ -26,8 +26,8 @@ public class TicTacToeWebUI implements SparkApplication {
 	}
     
 	private void buildFoot(StringBuilder html){
-    	html.append("<form action=\"/reset/game\" method=\"post\">");
-		html.append("<input type=\"submit\" value=\"Reset game\"></form>");
+    	html.append("<div style=\"position: fixed; top: 575px;\"><form action=\"/reset/game\" method=\"post\">");
+		html.append("<input type=\"submit\" value=\"Reset game\"></form></div>");
     	html.append("</body></html>");
 	}
 	
@@ -36,8 +36,10 @@ public class TicTacToeWebUI implements SparkApplication {
 		String imgur;
 
 		for(int i = 0; i < 9; i++){
+			int top = ((i/3) * 150) + 100;
+			int left = ((i % 3) * 150) + 10;
     		if(board[i] == null){
-    			html.append("<a href=/" + i + " ><div id=" + i + " style=\"border-style: solid; width: 150px; height: 150px; float: left;\">&nbsp;</div></a>");
+    			html.append("<a href=/" + i + " ><div id=" + i + " style=\"position: fixed; top: " + top + "px; left: " + left + "px; border-style: solid; width: 150px; height: 150px;\">&nbsp;</div></a>");
     		}
     		else{
     			if(board[i].getPlayer() == 'X'){
@@ -46,7 +48,7 @@ public class TicTacToeWebUI implements SparkApplication {
     			else{
     				imgur = "http://i.imgur.com/6aCHJCV.png";
     			}
-    			html.append("<div id=" + i + " style=\"background-image: url('" + imgur + "'); border-style: solid; width: 150px; height: 150px; float: left; color: #FFF;\">" + board[i].getPlayer() + "</div>");
+    			html.append("<div id=" + i + " style=\"position: fixed; top: " + top + "px; left: " + left + "px; background-image: url('" + imgur + "'); border-style: solid; width: 150px; height: 150px; color: #FFF;\">" + board[i].getPlayer() + "</div>");
     		}
     	}
 	}
