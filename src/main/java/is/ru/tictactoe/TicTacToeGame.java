@@ -203,14 +203,4 @@ public class TicTacToeGame {
 	public char winner(){
 		return winner;
 	}
-	
-	/**
-	 * Returns the moves of the <tt>TicTacToeGame</tt>
-	 * in the order they were performed.
-	 * @return The moves of the <tt>TicTacToeGame</tt>(as an iterable)
-	 * in the order they were performed.
-	 */
-	 public Iterable<Move> getMoves(){
-		return board;
-	}
 }
